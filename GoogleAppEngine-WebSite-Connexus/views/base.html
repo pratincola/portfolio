@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="text/html">
+    <link type="text/css" rel="stylesheet" href="../static/libs/bootstrap/css/base.css">
+    <title id="headLabel">Connex.us by pb</title>
+
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+    <link type="text/css" rel="stylesheet" href="../static/libs/bootstrap/css/960/min/960.css" />
+    <link type="text/css" rel="stylesheet" href="../static/libs/bootstrap/css/960/min/960_16_col.css" />
+    <link type="text/css" rel="stylesheet" href="../static/libs/bootstrap/css/normalize/min/normalize.css" />
+    <link type="text/css" rel="stylesheet" href="../static/libs/bootstrap/css/prettify/min/prettify.css" />
+    <link type="text/css" rel="stylesheet" href="../static/libs/bootstrap/css/style.css" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+</head>
+<body id="index" class="home">
+
+<header id="banner" class="body">
+    <h1><a href="/">{{title}}</a></h1>
+    <nav><ul>
+        <li class="home">   <a href="/">home</a></li>
+        <li class="manage"> <a href="/ManagementPage">Manage</a></li>
+        <li class="create"> <a href="/CreateStreamPage">Create</a></li>
+        <li class="view">   <a href="/ViewStreams">View</a></li>
+        <li class="search"> <a href="/SearchStreams">Search</a></li>
+        <li class="trend">  <a href="/TrendingStreams">Trending</a></li>
+        <li class="social"> <a href="/Social">Social</a></li>
+        <li><a href="{{url}}">{{url_linktext}}</a></li>
+    </ul></nav>
+
+</header><!-- /#banner -->
+    {% if error %}
+        <h1>{{error}}</h1>
+    {% endif%}
+{% block body %}
+
+{% endblock body %}
+
+</body>
+</html>
+

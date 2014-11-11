@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+   {% block body %}
+
+    <h1> My Streams:</h1>
+        {% if streams %}
+            <form action="/ManagementPage" method="post" id="myStream">
+                <table id="myStreamTable">
+                    <tr>
+                        <th>Name</th>
+                        <th>Last New Picture</th>
+                        <th>Number of Pictures</th>
+                        <th>Delete</th>
+                    </tr>
+                {% for stream in streams %}
+                    <tr>
+                        <td><a href="/ViewStream?stream={{stream['key']}}&cursor=">{{stream['stream_name']}}</a></td>
+                        <td>{{stream['stream_modified_Datetime'].strftime("%m/%d/%Y")}}</td>
+                        <td>{{stream['img_count']}}</td>
+                        <td><input type="checkbox" name="delete" value="{{stream['key']}}"></td>
+                    </tr>
+                {% endfor %}
+                </table>
+                <br>
+                <input name="delButton" type="submit" value="Delete Checked">
+            </form>
+        {% else %}
+            <h3> You have no streams yet</h3>
+        {% endif %}
+
+    <br>
+    <h1> Subscribed Streams:</h1>
+        {% if subscribedStreams %}
+            <form action="/ManagementPage" method="post" id="subsStream">
+                <table id="subsStreamTable">
+                    <tr>
+                        <th>Name</th>
+                        <th>Last New Picture</th>
+                        <th>Number of Pictures</th>
+                        <th>Views</th>
+                        <th>Unsubscribe</th>
+                    </tr>
+                    {% for myStream in subscribedStreams %}
+                        <tr>
+                            <td><a href="/ViewStream?stream={{myStream['key']}}&cursor=">{{myStream['stream_name']}}</a></td>
+                            <td>{{myStream['stream_modified_Datetime'].strftime("%m/%d/%Y")}}</td>
+                             <td>{{myStream['img_count']}}</td>
+                            <td>{{myStream['lifetime_stream_view_count']}}</td>
+                            <td><input type="checkbox" name="unsubscribe" value="{{myStream['key']}}"></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <br>
+                <input name="unSubsButton" type="submit" value="Unsubscribe Checked Streams">
+            </form>
+        {% else %}
+            <h3> You have no streams yet</h3>
+        {% endif %}
+   {% endblock body %}

@@ -1,0 +1,31 @@
+
+ReservationService - Main class, it does 2 things
+
+1. Starts the TCP & UDP server
+2. Starts the TCP/UDP or both clients, takes imput from the user as command line arguments and sends it to TCP/DatagramClient service
+
+server package:
+DatagramServer - Sets up the UDP socket server, Receives the connection forwards the message to BusinessLogic class
+and sends the response from the BusinessLogic back to the client
+
+TCPServer - Sets up the TCP server, Receives the connection forwards the message to BusinessLogic class
+and sends the response from the BusinessLogic back to the client
+
+Responder - Unused. Meant for testing
+
+Message - Unused. For future use.
+
+logicfacotries package:
+BusinessLogic - handles the commands (reserve, bookSeat, search & delete )sent by the client 
+
+client package:
+DatagramClient - Sends the message from the User to the server
+TCPClient - Sends the message from the User to the server
+
+Architecture:
+2 server threads: one for TCP connection and one for UDP connection
+1 client thread per initialization of the class for connecting to either TCP or UDP server depending on the command
+1 BusinessLogic class for parsing the incoming commands to the server and formulating a response for the client
+The goal is to have businesslogic as the critical-section where we honor incoming commands on a queue basis and not overbook 
+the movie theater or reserve the same seat for two different users. This is implemented using 'synchronized' call. However, 
+there are better ways of implementing is, but due to the time crunch, this seemed the simplest.
