@@ -183,7 +183,7 @@ public class SpanningTree extends Process{
                         sendVoteMsg(receivedVote);
                     }
                     else{
-                        System.out.println("Who gives a shit out neighbour's children: " + myNode.toString());
+                        System.out.println("No one cares for neighbour's children: " + myNode.toString());
                     }
                 }
                 // Have Child but No Parent - ROOT
@@ -211,7 +211,7 @@ public class SpanningTree extends Process{
                         }
                     }
                     else{
-                        System.out.println("Should never see this line: One: Who gives a shit out neighbour's children: " + myNode.toString());
+                        System.out.println("Should never see this line: One: No one cares for neighbour's children: " + myNode.toString());
                     }
                 }
                 else{
@@ -230,7 +230,7 @@ public class SpanningTree extends Process{
                         sendVoteMsg(vote);
                     }
                     else{
-                        System.out.println("Who gives a shit out neighbour's children: " + myNode.toString());
+                        System.out.println("No one cares for neighbour's children: " + myNode.toString());
                     }
                 }
                 // Have Child but No Parent - ROOT
@@ -261,7 +261,7 @@ public class SpanningTree extends Process{
                         // Potential to make it more efficient, but using the ability to overhear messages and
                         // triggering a LE, by passing neighbour, since I have higher priority than my neighbour...
                         System.out.println("Should never see this line: Three: Overheard from neighbour, " +
-                                "not my child, Who gives a shit out neighbour's children: " + myNode
+                                "not my child, No one cares for neighbour's children: " + myNode
                                 .toString
                                         ());
                     }
